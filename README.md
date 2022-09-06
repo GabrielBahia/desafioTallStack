@@ -1,64 +1,58 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Desafio de Laravel - Code Junior 2022.2
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+| **Sumário** |
+|-------------|
+| [Objetivos do repositorio](#objetivos-do-repositorio) |
+| [Proposito do desafio](#proposito-do-desafio) |
+| [Link para o desafio](#link-para-o-desafio) |
+| [Link para a trilha de Laravel](#link-para-a-trilha-de-laravel) |
+| [Como executar o projeto inicial](#como-executar-o-projeto-inicial) |
+| [Como configurar o env para envio de email](#como-configurar-o-env-para-envio-de-email) |
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Objetivos do repositorio
+Objetivos do repositorio: ..................;
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Objetivos do repositorio
+Proposito do desafio: ......................; 
+<br>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Link para o desafio
+Link para o desafio: .......................;
+<br>
 
-## Learning Laravel
+## Link para a trilha de Laravel
+Link para a trilha de Laravel: https://drive.google.com/drive/folders/16U7EIQ58v3ZgeTE-Eh3ivZ_lKretVEFc?usp=sharing
+<br>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Como executar o projeto inicial
+\* É necessário ter o _PHP 8.1+_ e o _Laravel 9_ instalados.
+1. Abra o Terminal na Pasta do Projeto;
+2. Instale as dependências necessárias: `composer install`;
+3. Atualize as dependências: `composer update`;
+4. Rode o comando `php artisan storage:link` para linkar a pasta de storage com a pasta public;
+5. Crie um arquivo .env na pasta raiz e após isso copie o conteudo do .env.example para dentro do arquivo .env;
+6. Crie uma key com `php artisan key:generate`. A key servira para as hashes;
+7. Crie um banco de dados `sql` com o nome de `laravel_desafio_code`;
+8. Rode as migrations com o comando php artisan migrate;
+9. Instale o npm com `npm install` e depois rode `npm run dev` e `npm run build`;
+10. Rode o comando: `php artisan serve` para iniciar o servidor;
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Como configurar o .env para envio de email
+\* Essa configuração é primordial para o sistema, uma vez que um usuario cadastrado só pode utilizar o sistema após verificar o email
+1. Crie uma conta no site https://mailtrap.io/
+2. Após realizar o login, em MyInbox => Integrations, altere de cURL para Laravel 7+
+3. Copie o conteúdo após a alteração e substitua os campos: <br>
+MAIL_MAILER=smtp
+<br>
+MAIL_HOST=mailhog
+<br>
+MAIL_PORT=1025
+<br>
+MAIL_USERNAME=null
+<br>
+MAIL_PASSWORD=null
+<br>
+MAIL_ENCRYPTION=null
+<br>
+pelo conteúdo copiado 
