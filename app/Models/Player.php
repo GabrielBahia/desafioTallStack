@@ -15,6 +15,7 @@ class Player extends Model
         'nationality', 
         'wins', 
         'losses',
+        'team_id',
     ];
     
     public function team()
