@@ -1,15 +1,17 @@
-@props(['botao','title', 'update'])
+@props(['botao','title', 'update', 'name', 'player_id'])
 
 <div class="container mx-auto p-6 text-center">
     <div x-data="{ open: false }" class="mt-6">
 
-        <!-- Modal Button -->
-        <button @click="open = true; $nextTick(() => $refs.closeBtn.focus())" class="bg-black text-black px-4 py-2 rounded no-outline focus:shadow-outline select-none">{{ $botao }}</button>
-        <!-- End Modal Button -->
+        @if($update)
+        <button wire:click.prevent="edit({{ $player_id }})" @click="open = true; $nextTick(() => $refs.closeBtn.focus())" class="bg-gray text-black px-4 py-2 rounded no-outline focus:shadow-outline select-none">{{ $botao }}</button>
+        @else
+        <button @click="open = true; $nextTick(() => $refs.closeBtn.focus())" class="bg-gray text-black px-4 py-2 rounded no-outline focus:shadow-outline select-none">{{ $botao }}</button>
+        @endif
 
         <!-- Open Modal -->
         <div x-show="open" @mousedown.away="open = false" @keydown.window.escape="open = false" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="absolute right-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0,0,0,.5);">
-            <div @click.away="open = false" class="text-left bg-white h-auto p-4 md:max-w-xl md:p-6 lg:p-10 shadow-xl rounded-lg mx-2 md:mx-0">
+            <div @click.away="open = true" class="text-left bg-white h-auto p-4 md:max-w-xl md:p-6 lg:p-10 shadow-xl rounded-lg mx-2 md:mx-0">
                 <div class="flex justify-between items-center">
                     <div class="text-2xl">{{ $title }}</div>
 
@@ -26,7 +28,7 @@
                     <div class="sm:col-span-6">
                         <label for="name" class="block text-sm font-medium text-gray-700">Nome</label>
                         <div class="mt-1">
-                            <input type="text" id="name" wire:model="name" name="name" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            <input type="text" id="name" wire:model="name" name="name" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" >
                         </div>
                         @error('name')
                         <span class="text-red-400">{{ $message }}</span>
@@ -67,9 +69,9 @@
 
                 <div class="flex space-x-4 mt-8">
                     @if ($update)
-                        <button type="submit" wire:click.prevent="storePlayer" x-ref="closeBtn" class="focus:outline-none focus:ring focus:ring-gray-700 hover:bg-gray-700 border border-gray-700 text-gray-700 hover:text-gray-100 px-4 py-2 rounded no-outline focus:shadow-outline select-none" @click="open = false">Editar</button>
+                        <button type="submit" wire:click.prevent="updatePlayer" x-ref="closeBtn" class="focus:outline-none focus:ring focus:ring-gray-700 hover:bg-gray-700 border border-gray-700 text-gray-700 hover:text-gray-100 px-4 py-2 rounded no-outline focus:shadow-outline select-none" @click="open = false">Editar</button>
                     @else
-                        <button type="submit" wire:click="storePost" x-ref="closeBtn" class="focus:outline-none focus:ring focus:ring-gray-700 hover:bg-gray-700 border border-gray-700 text-gray-700 hover:text-gray-100 px-4 py-2 rounded no-outline focus:shadow-outline select-none" @click="open = false">Criar</button>
+                        <button type="submit" wire:click="storePlayer" x-ref="closeBtn" class="focus:outline-none focus:ring focus:ring-gray-700 hover:bg-gray-700 border border-gray-700 text-gray-700 hover:text-gray-100 px-4 py-2 rounded no-outline focus:shadow-outline select-none" @click="open = false">Criar</button>
                     @endif
                     <button class="hover:bg-gray-700 border border-gray-700 text-gray-700 hover:text-gray-100 px-4 py-2 rounded no-outline focus:shadow-outline select-none" @click="open = false">Cancel</button>
                 </div>
