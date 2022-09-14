@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
         <!-- Alpine -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])

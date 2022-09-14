@@ -20,6 +20,9 @@ class Players extends Component
     public $losses;
     public $team_id;
     public $player;
+    public $validationPlayer;
+    public $showCreate = false;
+    public $showEdit = false;
 
     protected $rules = [
         'name' => 'string|required|min:3',
@@ -40,6 +43,7 @@ class Players extends Component
             'team_id' => $this->team_id
         ]);
         
+        $this->showCreate = false;
         $this->reset();
     }
 
@@ -51,7 +55,6 @@ class Players extends Component
         $this->nationality = $player->nationality;
         $this->wins = $player->wins;
         $this->losses = $player->losses;
-        $this->team = Team::where('id', $player->team_id)->first();
         $this->player = $player;
     }
     
@@ -63,7 +66,17 @@ class Players extends Component
 
     public function updatePlayer()
     {
-        dd("chegou");
+        $this->validate();
+
+        $player = Player::where('id', $this->id_player)->update([
+            'name' => $this->name,
+            'age' => $this->age,
+            'nationality' => $this->nationality,
+            'team_id' => $this->team_id
+        ]);
+
+        $this->showEdit = false;
+        $this->reset();
     }
 
     public function deletePlayer($id)
@@ -75,8 +88,9 @@ class Players extends Component
 
     public function render()
     {
-        return view('livewire.players-index', [
-            'players' => Player::all()
+        return view('livewire.players.players-index', [
+            'teams' => Team::all(),
+            'players' => Player::all(),
         ]);
     }
 }
