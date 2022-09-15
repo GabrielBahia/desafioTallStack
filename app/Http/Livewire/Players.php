@@ -19,6 +19,7 @@ class Players extends Component
     public $wins;
     public $losses;
     public $team_id;
+    public $team;
     public $player;
     public $validationPlayer;
     public $showCreate = false;
@@ -47,12 +48,27 @@ class Players extends Component
         $this->reset();
     }
 
+    public function viewPlayer(Player $player) 
+    {
+        $this->id_player = $player->id;
+        $this->name = $player->name;
+        $this->age = $player->age;
+        $this->nationality = $player->nationality;
+        $this->wins = $player->wins;
+        $this->team = Team::where('id', $player->team_id)->first();
+        $this->team = $this->team->name;
+        $this->losses = $player->losses;
+        $this->player = $player;
+    }
+
     public function edit(Player $player)
     {
         $this->id_player = $player->id;
         $this->name = $player->name;
         $this->age = $player->age;
         $this->nationality = $player->nationality;
+        $this->team = Team::where('id', $player->team_id)->first();
+        $this->team = $this->team->name;
         $this->wins = $player->wins;
         $this->losses = $player->losses;
         $this->player = $player;

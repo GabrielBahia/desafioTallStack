@@ -44,8 +44,28 @@
                     </div>
 
                     <div class="sm:col-span-6">
+                        <label for="wins" class="block text-sm font-medium text-gray-700">Vitórias</label>
+                        <div class="mt-1">
+                            <input required type="number" step="1" id="wins" wire:model="wins" name="wins" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                        </div>
+                        @error('wins')
+                        <span class="text-red-400">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="sm:col-span-6">
+                        <label for="losses" class="block text-sm font-medium text-gray-700">Derrotas</label>
+                        <div class="mt-1">
+                            <input required type="number" step="1" id="losses" wire:model="losses" name="losses" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                        </div>
+                        @error('losses')
+                        <span class="text-red-400">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="sm:col-span-6">
                         <label for="team_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Times</label>
-                        <select wire:model="team_id" id="team_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select wire:model="team" id="team_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option>Selecione um time:</option>
                             @foreach($teams as $team)
                             <option value="{{ $team->id }}">{{ $team->name }}</option>
