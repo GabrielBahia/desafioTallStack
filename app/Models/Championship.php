@@ -12,12 +12,12 @@ class Championship extends Model
     protected $fillable = [
         'name', 
         'game', 
-        'start-date', 
-        'finish-date', 
+        'start_date', 
+        'finish_date', 
     ];
 
     public function teams()
     {
-        return $this->hasMany(Team::class);
+        return $this->belongsToMany(Team::class);
     }
 }

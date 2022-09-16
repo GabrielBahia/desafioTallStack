@@ -24,6 +24,7 @@ class Players extends Component
     public $validationPlayer;
     public $showCreate = false;
     public $showEdit = false;
+    public $showView = false;
 
     protected $rules = [
         'name' => 'string|required|min:3',
@@ -59,6 +60,8 @@ class Players extends Component
         $this->team = $this->team->name;
         $this->losses = $player->losses;
         $this->player = $player;
+
+        $this->showView = false;
     }
 
     public function edit(Player $player)
@@ -72,9 +75,10 @@ class Players extends Component
         $this->wins = $player->wins;
         $this->losses = $player->losses;
         $this->player = $player;
+        $this->team_id = $player->team_id;
     }
     
-    
+
     public function updatePlayer()
     {
         $this->validate();

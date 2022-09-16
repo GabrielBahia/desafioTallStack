@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('game');
-            $table->date('start-date')->default(now());
-            $table->date('finish-date');
+            $table->date('start_date')->default(now());
+            $table->date('finish_date');
             $table->timestamps();
         });
     }

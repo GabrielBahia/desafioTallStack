@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Players;
 use App\Http\Livewire\Teams;
 use App\Http\Livewire\Championships;
+use App\Http\Livewire\Ranking;
+use App\Http\Livewire\Dashboard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +19,6 @@ use App\Http\Livewire\Championships;
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // >>> insira suas rotas aqui !!!!! <<<
-    
     Route::get('/', function () {
         return view('dashboard');
     })/*->middleware('auth')*/;
@@ -27,21 +27,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard');
     })/*->middleware(['auth'])*/->name('dashboard');
 
-    Route::get('/players', Players::class);
+    Route::get('/jogadores', Players::class)->name('jogadores');
 
-    Route::get('/teams', Teams::class);
+    Route::get('/times', Teams::class)->name('times');
 
-    Route::get('/championships', Championships::class);
+    Route::get('/campeonatos', Championships::class)->name('campeonatos');
+
+    Route::get('/ranking', Ranking::class)->name('ranking');
+
+    Route::get('/dashboardCampeonatos', Dashboard::class)->name('dashboardCampeonatos');
+
 });
 
-/*Route::get('/criar-player', function () {
-    return view('players.create');
-});*/
-
-
-Route::get('/dale', function() {
-    return view('dale');
-});
 
 
 require __DIR__.'/auth.php';

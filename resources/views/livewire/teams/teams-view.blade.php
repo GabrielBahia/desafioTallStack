@@ -48,15 +48,6 @@
                 </div>
             </div>
 
-
-            <div class="sm:col-span-6">
-                <label for="losses" class="block text-sm font-medium text-gray-700">Jogadores</label>
-                <ul class="list-disc">
-                    @foreach($playersTeam as $playerTeam)
-                    <li>{{ $playerTeam->name }}</li>
-                    @endforeach
-                </ul>
-            </div>
             
             <div class="sm:col-span-6">
                 <label for="losses" class="block text-sm font-medium text-gray-700">Campeonatos</label>

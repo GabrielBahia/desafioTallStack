@@ -32,7 +32,6 @@ class Teams extends Component
     public function storeTeam()
     {
         $this->validate();
-
         $this->score = $this->wins - $this->losses;
 
         $this->validate();
@@ -46,8 +45,10 @@ class Teams extends Component
         ]);
 
         Player::whereIn('id', $this->playersTeam)->update([
-            'id_team' => $team->id,
+            'team_id' => $team->id,
         ]);
+
+        $team->championships()->sync($this->championshipsTeam);
 
         $this->showCreate = false;
         $this->reset();

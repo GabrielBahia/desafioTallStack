@@ -2,7 +2,7 @@
 
     <div class="text-left bg-white lg:p-14 lg:px-52 shadow-xl rounded-lg mx-2 md:mx-0">
         <div class="flex w-96 justify-between items-center">
-            <div class="text-2xl">Criar Time</div>
+            <div class="text-2xl">Criar Campeonato</div>
 
             <!-- Modal Close -->
             <button class="" @click="create = false">
@@ -24,59 +24,48 @@
             </div>
 
             <div class="sm:col-span-6">
-                <label for="nationality" class="block text-sm font-medium text-gray-700">Nacionalidade</label>
+                <label for="game" class="block text-sm font-medium text-gray-700">Jogo</label>
                 <div class="mt-1">
-                    <input required type="text" id="nationality" wire:model="nationality" name="nationality" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input required type="text" id="game" wire:model="game" name="game" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                 </div>
-                @error('nationality')
+                @error('game')
                 <span class="text-red-400">{{ $message }}</span>
                 @enderror
             </div>
 
             <div class="sm:col-span-6">
-                <label for="wins" class="block text-sm font-medium text-gray-700">Vitórias</label>
+                <label for="start_date" class="block text-sm font-medium text-gray-700">Data de início</label>
                 <div class="mt-1">
-                    <input required type="number" step="1" id="wins" wire:model="wins" name="wins" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input required type="date" id="start_date" wire:model="start_date" name="start_date" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                 </div>
-                @error('wins')
+                @error('start_date')
                 <span class="text-red-400">{{ $message }}</span>
                 @enderror
             </div>
 
             <div class="sm:col-span-6">
-                <label for="losses" class="block text-sm font-medium text-gray-700">Derrotas</label>
+                <label for="finish_date" class="block text-sm font-medium text-gray-700">Data de encerramento</label>
                 <div class="mt-1">
-                    <input required type="number" step="1" id="losses" wire:model="losses" name="losses" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input required type="date" id="finish_date" wire:model="finish_date" name="finish_date" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                 </div>
-                @error('losses')
+                @error('finish_date')
                 <span class="text-red-400">{{ $message }}</span>
                 @enderror
             </div>
 
-
             <div class="sm:col-span-6">
-                <label for="losses" class="block text-sm font-medium text-gray-700">Jogadores</label>
-                <select wire:model="playersTeam" multiple>
-                @foreach($players as $player)
-                    <option value="{{ $player->id }}">{{ $player->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="sm:col-span-6">
-                <label for="losses" class="block text-sm font-medium text-gray-700">Campeonatos</label>
-                <select wire:model="championshipsTeam" multiple>
-                @foreach($championships as $championship)
-                    <option value="{{ $championship->id }}">{{ $championship->name }}</option>
+                <label for="team_id" class="block text-sm font-medium text-gray-700">Times</label>
+                <select wire:model="teamsChampionship" multiple>
+                    @foreach($teams as $team)
+                    <option value="{{ $team->id }}">{{ $team->name }}</option>
                     @endforeach
                 </select>
             </div>
 
             <div class="flex space-x-4 mt-8">
-                <button type="submit" wire:click.prevent="storeTeam" x-ref="closeBtn" class="focus:outline-none focus:ring focus:ring-gray-700 hover:bg-gray-700 border border-gray-700 text-gray-700 hover:text-gray-100 px-4 py-2 rounded no-outline focus:shadow-outline select-none">Criar</button>
+                <button type="submit" wire:click.prevent="storeChampionship" x-ref="closeBtn" class="focus:outline-none focus:ring focus:ring-gray-700 hover:bg-gray-700 border border-gray-700 text-gray-700 hover:text-gray-100 px-4 py-2 rounded no-outline focus:shadow-outline select-none">Criar</button>
                 <button class="hover:bg-gray-700 border border-gray-700 text-gray-700 hover:text-gray-100 px-4 py-2 rounded no-outline focus:shadow-outline select-none" @click="create = false">Cancel</button>
             </div>
-
         </form>
 
     </div>
