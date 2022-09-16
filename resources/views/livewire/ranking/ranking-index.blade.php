@@ -1,6 +1,6 @@
 <div class="max-w-6xl mx-auto">
     <div class="m-2 p-2">
-        <span class="text-xl mb-2 display:inline-block">Ranking de times</span>
+    <h1 class="shadow-lg shadow-violet-800 mt-8 mb-12 py-2 align-middle font-semibold rounded-full text-3xl w-full text-center display:inline-block bg-purple-500">Ranking de times</h1>
         <div>
             <div class="inline-flex mt-2">
                 <input type="text" class="block w-52 appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Procurar pelo país de origem:" wire:model="searchTermTime" />
