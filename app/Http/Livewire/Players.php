@@ -74,12 +74,7 @@ class Players extends Component
         $this->player = $player;
     }
     
-
-    public function showPlayer()
-    {
-
-    }
-
+    
     public function updatePlayer()
     {
         $this->validate();
