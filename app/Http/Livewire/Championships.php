@@ -13,6 +13,8 @@ class Championships extends Component
     public $game;
     public $start_date;
     public $finish_date;
+    public $id_championship;
+    public $campeonato;
     public $teamsChampionship = [];
     public $showCreate = false;
     public $showEdit = false;
@@ -41,6 +43,47 @@ class Championships extends Component
         
         $this->showCreate = false;
         $this->reset();
+    }
+
+    public function viewChampionship(Championship $championship) 
+    {
+        $this->name = $championship->name;
+        $this->game = $championship->game;
+        $this->start_date = $championship->start_date;
+        $this->finish_date = $championship->finish_date;
+        $this->campeonato = $championship;
+
+        $this->showView = false;
+    }
+
+    public function edit(Championship $championship) 
+    {
+        $this->name = $championship->name;
+        $this->game = $championship->game;
+        $this->start_date = $championship->start_date;
+        $this->finish_date = $championship->finish_date;
+        $this->teamsChampionship = $championship->players;
+        $this->id_championship = $championship->id;
+    }
+
+    public function updateChampionship()
+    {
+        $this->validate();
+
+        $championship = Championship::where('id', $this->id_championship)->first();
+        $championship->update([
+            'name' => $this->name,
+            'game' => $this->game,
+            'start_date' => $this->start_date,
+            'finish_date' => $this->finish_date,
+        ]);
+
+        $oldTeams = $championship->teams;
+        $championship->teams()->detach($oldTeams);
+        $championship->teams()->sync($this->teamsChampionship);
+
+        $this->showEdit = false;
+        $this->reset(); 
     }
 
     public function deleteChampionship($id)

@@ -64,12 +64,6 @@ class Teams extends Component
         $this->score = $team->score;
         $this->wins = $team->wins;
         $this->losses = $team->losses;
-        /*if(isset($team->players)) {
-            $this->playersTeam = $team->players;
-        }
-        if(isset($team->championships)) {  
-            $this->championshipsTeam = $team->championships;
-        }*/
         $this->time = $team;
     }
 
