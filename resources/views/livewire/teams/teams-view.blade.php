@@ -48,13 +48,26 @@
                 </div>
             </div>
 
+            <div class="sm:col-span-6">
+                <label for="losses" class="block text-sm font-medium text-gray-700">Jogadores</label>
+                <ul class="list-disc">
+                    @if(isset($time->players))
+                        @foreach($time->players as $player)
+                        <li> {{ $player->name }} </li>
+                        @endforeach 
+                    @endif
+                </ul>
+            </div> 
+
             
             <div class="sm:col-span-6">
                 <label for="losses" class="block text-sm font-medium text-gray-700">Campeonatos</label>
                 <ul class="list-disc">
-                    @foreach($championships as $championship)
-                    <li>{{ $championship->name }}</li>
-                    @endforeach
+                    @if(isset($time->championships))
+                        @foreach($time->championships as $championship)
+                        <li> {{ $championship->name }} </li>
+                        @endforeach
+                    @endif    
                 </ul>
             </div>
 

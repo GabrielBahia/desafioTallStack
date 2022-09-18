@@ -30,7 +30,6 @@ class Players extends Component
         'name' => 'string|required|min:3',
         'age' => 'numeric|required',
         'nationality' => 'string|required',
-        'team_id' => 'required'
     ];
 
 
@@ -57,7 +56,14 @@ class Players extends Component
         $this->nationality = $player->nationality;
         $this->wins = $player->wins;
         $this->team = Team::where('id', $player->team_id)->first();
-        $this->team = $this->team->name;
+
+        if(!isset($this->team)) {
+            $this->team = "Sem time";
+        }
+        else {
+            $this->team = $this->team->name;
+        }
+
         $this->losses = $player->losses;
         $this->player = $player;
 
@@ -71,7 +77,14 @@ class Players extends Component
         $this->age = $player->age;
         $this->nationality = $player->nationality;
         $this->team = Team::where('id', $player->team_id)->first();
-        $this->team = $this->team->name;
+
+        if(!isset($this->team)) {
+            $this->team = "Sem time";
+        }
+        else {
+            $this->team = $this->team->name;
+        }
+
         $this->wins = $player->wins;
         $this->losses = $player->losses;
         $this->player = $player;
@@ -83,12 +96,17 @@ class Players extends Component
     {
         $this->validate();
 
+        if($this->team_id == -1) {
+            $this->team_id = NULL;
+        }
+
         $player = Player::where('id', $this->id_player)->update([
             'name' => $this->name,
             'age' => $this->age,
             'nationality' => $this->nationality,
             'team_id' => $this->team_id
         ]);
+
 
         $this->showEdit = false;
         $this->reset();

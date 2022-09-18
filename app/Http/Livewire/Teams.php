@@ -6,6 +6,7 @@ use App\Models\Championship;
 use App\Models\Player;
 use App\Models\Team;
 use Livewire\Component;
+use PhpParser\Node\NullableType;
 
 class Teams extends Component
 {
@@ -19,6 +20,7 @@ class Teams extends Component
     public $championshipsTeam = [];
     public $showCreate = false;
     public $showEdit = false;
+    public $time;
     
 
     protected $rules = [
@@ -62,7 +64,13 @@ class Teams extends Component
         $this->score = $team->score;
         $this->wins = $team->wins;
         $this->losses = $team->losses;
-        $this->playersTeam = $team->players;
+        /*if(isset($team->players)) {
+            $this->playersTeam = $team->players;
+        }
+        if(isset($team->championships)) {  
+            $this->championshipsTeam = $team->championships;
+        }*/
+        $this->time = $team;
     }
 
     public function edit(Team $team)
@@ -73,20 +81,34 @@ class Teams extends Component
         $this->score = $team->score;
         $this->wins = $team->wins;
         $this->losses = $team->losses;
+        $this->time = $team;
     }
     
     
     public function updateTeam()
     {
         $this->validate();
-
-        $Team = Team::where('id', $this->id_team)->update([
+        $team = Team::where('id', $this->id_team)->first();
+        $team->update([
             'name' => $this->name,
             'nationality' => $this->nationality,
             'score' => $this->score,
             'wins' => $this->wins,
             'losses' => $this->losses,
         ]);
+
+        $oldPlayers = $team->players;
+        foreach($oldPlayers as $oldPlayer) {
+            $oldPlayer->team_id = NULL;
+            $oldPlayer->save();
+        }
+        Player::whereIn('id', $this->playersTeam)->update([
+            'team_id' => $team->id,
+        ]);
+
+        $oldChampionships = $team->championships;
+        $team->championships()->detach($oldChampionships);
+        $team->championships()->sync($this->championshipsTeam);
 
         $this->showEdit = false;
         $this->reset();

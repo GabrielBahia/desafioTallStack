@@ -19,10 +19,18 @@
         <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
+
+        <style>
+        [x-cloak] { 
+            display: none !important;
+        }
+    </style>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased" x-cloak x-data="{openModal: false}"
+        :class="openModal ? 'overflow-hidden' : 'overflow-visible'" >
         <div class="min-h-screen bg-zinc-600">
             @include('layouts.navigation')
+            
 
             <!-- Page Content -->
             <main class="min-h-screen">

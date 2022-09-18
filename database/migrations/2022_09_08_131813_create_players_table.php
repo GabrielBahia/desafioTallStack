@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('nationality');
             $table->unsignedInteger('wins')->default(0);
             $table->unsignedInteger('losses')->default(0);
-            $table->foreignId('team_id')->constrained()->onDelete('cascade');
+            $table->foreignId('team_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -57,7 +57,7 @@
 
             <div class="sm:col-span-6">
                 <label for="losses" class="block text-sm font-medium text-gray-700">Jogadores</label>
-                <select multiple>
+                <select wire:model="playersTeam" multiple>
                     @foreach($players as $player)
                     <option value="{{ $player->id }}">{{ $player->name }}</option>
                     @endforeach
@@ -67,7 +67,7 @@
 
             <div class="sm:col-span-6">
                 <label for="losses" class="block text-sm font-medium text-gray-700">Campeonatos</label>
-                <select multiple>
+                <select wire:model="championshipsTeam" multiple>
                     @foreach($championships as $championship)
                     <option value="{{ $championship->id }}">{{ $championship->name }}</option>
                     @endforeach
