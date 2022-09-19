@@ -15,6 +15,7 @@ class Dashboard extends Component
     public $finish_date;
     public $id_championship;
     public $campeonato;
+    public $ordernar;
     public $teamsChampionship = [];
     public $showCreate = false;
     public $showEdit = false;
@@ -27,14 +28,38 @@ class Dashboard extends Component
         $this->start_date = $championship->start_date;
         $this->finish_date = $championship->finish_date;
         $this->campeonato = $championship;
+        $this->id_championship = $championship->id;
 
         $this->showView = false;
     }
 
+    public function filtro($ordernar)
+    {
+        $this->ordernar = $ordernar;
+    }
+
     public function render()
     {
+        $timesId = [];
+        $times = Team::all();
+        if(isset($this->id_championship)) {
+            $campeonato =  Championship::where('id', 'like', $this->id_championship)->first();
+            $times = $campeonato->teams;
+            foreach($times as $time) {
+                $timesId[] = $time->id;
+            }
+
+            if(isset($this->ordernar)) {
+                $times = Team::whereIn('id', $timesId)
+                    ->orderBy('score', 'desc')->get();
+            }
+            
+    
+        }
+
         return view('livewire.dashboard.dashboard-index', [
             'championships' => Championship::all(),
+            'teams' => $times,
         ]);
     }
 }

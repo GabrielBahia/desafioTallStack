@@ -10,23 +10,25 @@ use Livewire\Component;
 class Ranking extends Component
 {
 
-    public $searchTermTime;
+    public $searchNationality;
     public $ordernar = NULL;
 
-    public function ordernarPor($ordernar)
+    public function filtro($ordernar)
     {
         $this->ordernar = $ordernar;
     }
 
     public function render()
     {
-        if(isset($this->ordernar))
-        {
-            $teams = Team::OrderBy($this->ordernar,'desc')->get();
-        } else {
-            $teams = Team::all();  
+        if(isset($this->ordernar) && $this->searchNationality != ""){
+            $teams = Team::where('nationality', 'like', $this->searchNationality)->OrderBy($this->ordernar,'desc')->get();
+        } else if(isset($this->ordernar) && $this->searchNationality == ""){
+            $teams = Team::OrderBy($this->ordernar,'desc')->get(); 
         }
-
+        else {
+            $teams = Team::all();
+        }
+        
         return view('livewire.ranking.ranking-index',[
             'teams' => $teams,
         ]);
