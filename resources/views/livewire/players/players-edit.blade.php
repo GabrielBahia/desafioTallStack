@@ -1,7 +1,7 @@
 <div  x-show.transition.duration.500ms="edit" wire:ignore.self x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="modal absolute right-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0,0,0,.5);">
     
     <div class="text-left bg-white lg:p-14 lg:px-52 shadow-xl rounded-lg mx-2 md:mx-0">
-                <div class="flex w-96 justify-between items-center">
+                <div class="flex justify-between items-center">
                     <div class="text-2xl">Editar Jogador</div>
             
                     <!-- Modal Close -->
@@ -12,7 +12,7 @@
                     </button>
                     <!-- Modal Close -->
                 </div>
-                <form class="w-96">
+                <form>
                     <div class="sm:col-span-6">
                         <label for="name" class="block text-sm font-medium text-gray-700">Nome</label>
                         <div class="mt-1">
@@ -26,7 +26,7 @@
                     <div class="sm:col-span-6">
                         <label for="age" class="block text-sm font-medium text-gray-700">Idade</label>
                         <div class="mt-1">
-                            <input required type="number" id="age" wire:model="age" name="age" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            <input required type="number" step="1" min="1" id="age" wire:model="age" name="age" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                         </div>
                         @error('age')
                         <span class="text-red-400">{{ $message }}</span>
@@ -46,7 +46,7 @@
                     <div class="sm:col-span-6">
                         <label for="wins" class="block text-sm font-medium text-gray-700">Vitórias</label>
                         <div class="mt-1">
-                            <input required type="number" step="1" id="wins" wire:model="wins" name="wins" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            <input required type="number" step="1" min="1" id="wins" wire:model="wins" name="wins" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                         </div>
                         @error('wins')
                         <span class="text-red-400">{{ $message }}</span>
@@ -56,7 +56,7 @@
                     <div class="sm:col-span-6">
                         <label for="losses" class="block text-sm font-medium text-gray-700">Derrotas</label>
                         <div class="mt-1">
-                            <input required type="number" step="1" id="losses" wire:model="losses" name="losses" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            <input required type="number" step="1" min="1" id="losses" wire:model="losses" name="losses" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                         </div>
                         @error('losses')
                         <span class="text-red-400">{{ $message }}</span>
@@ -66,7 +66,7 @@
                     <div class="sm:col-span-6">
                         <label for="team_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Times</label>
                         <select wire:model="team_id" id="team_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option value="-1" >Selecione um time:</option>
+                            <option value="-1" disabled selected >Selecione um time:</option>
                             @foreach($teams as $team)
                             <option value="{{ $team->id }}">{{ $team->name }}</option>
                             @endforeach

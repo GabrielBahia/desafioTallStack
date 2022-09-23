@@ -43,7 +43,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-black hover:text-black hover:border-gray-300 focus:outline-none focus:text-black focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div class="flex items-center flex-nowrap" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-2 bi bi-person-bounding-box" viewBox="0 0 16 16">
+                            <div class="flex items-center flex-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-2 bi bi-person-bounding-box" viewBox="0 0 16 16">
                                     <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                                 </svg> {{ Auth::user()->name }}</div>
@@ -85,8 +85,24 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('ranking')" :active="request()->routeIs('ranking')">
+                {{ __('Ranking') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('dashboardCampeonatos')" :active="request()->routeIs('dashboardCampeonatos')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('jogadores')" :active="request()->routeIs('jogadores')">
+                {{ __('Jogadores') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('times')" :active="request()->routeIs('times')">
+                {{ __('Times') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('campeonatos')" :active="request()->routeIs('campeonatos')">
+                {{ __('Campeonatos') }}
             </x-responsive-nav-link>
         </div>
 

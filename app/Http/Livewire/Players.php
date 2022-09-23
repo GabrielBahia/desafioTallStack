@@ -28,8 +28,10 @@ class Players extends Component
 
     protected $rules = [
         'name' => 'string|required|min:3',
-        'age' => 'numeric|required',
+        'age' => 'numeric|required|min:1',
         'nationality' => 'string|required',
+        'wins' => 'numeric|min:0',
+        'losses' => 'numeric|min:0',
     ];
 
 
@@ -41,6 +43,8 @@ class Players extends Component
             'name' => $this->name,
             'age' => $this->age,
             'nationality' => $this->nationality,
+            'wins' => $this->wins,
+            'losses' => $this->losses,
             'team_id' => $this->team_id
         ]);
         
@@ -104,6 +108,8 @@ class Players extends Component
             'name' => $this->name,
             'age' => $this->age,
             'nationality' => $this->nationality,
+            'wins' => $this->wins,
+            'losses' => $this->losses,
             'team_id' => $this->team_id
         ]);
 

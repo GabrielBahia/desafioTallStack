@@ -15,9 +15,9 @@
                 <div class="text-2xl mb-14">Visualizar Campeonato</div>
             </div>
         </div>
-        <div class="flex justify-center">
+        <div class="flex justify-center flex-wrap">
 
-            <div class="flex flex-row">
+            <div class="flex flex-row flex-wrap">
                 <div class="mr-2">
                     <label for="name" class="block text-sm font-medium text-gray-700">Nome</label>
                     <div class="mt-1">
@@ -33,7 +33,7 @@
             </div>
 
 
-            <div class="flex flex-row">
+            <div class="flex flex-row flex-wrap">
                 <div class="mr-2">
                     <label for="start_date" class="block text-sm font-medium text-gray-700">Data de início</label>
                     <div class="mt-1">
@@ -48,7 +48,6 @@
                 </div>
             </div>
 
-
         </div>
         <div class="flex justify-center mt-12">
             <label for="team_id" class="text-2xl block font-medium text-gray-700">Times participantes</label>
@@ -59,34 +58,39 @@
             </button>
         </div>
         <div class="flex justify-center mt-8">
-
-            <table class="w-full divide-y divide-gray-200">
-                <thead class="bg-violet-500 dark:bg-gray-600 dark:text-gray-200">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 text-left font-large text-black dark:text-gray-200 uppercase tracking-wider">
-                            Time</th>
-                        <th scope="col" class="px-6 py-3 text-left font-large text-black dark:text-gray-200 uppercase tracking-wider">
-                            Pontuação</th>
-                        <th scope="col" class="px-6 py-3 text-left font-large text-black dark:text-gray-200 uppercase tracking-wider">
-                            Vitórias</th>
-                        <th scope="col" class="px-6 py-3 text-left font-large text-black dark:text-gray-200 uppercase tracking-wider">
-                            Derrotas</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-violet-400 divide-y divide-gray-200">
-                    <tr></tr>
-                    @if(isset($campeonato->teams))
-                    @foreach($teams as $team)
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $team->name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $team->score }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $team->wins }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $team->losses }}</td>
-                    </tr>
-                    @endforeach
-                    @endif
-                </tbody>
-            </table>
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="shadow-2xl overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <table class="w-full divide-y divide-gray-200">
+                            <thead class="bg-violet-500 dark:bg-gray-600 dark:text-gray-200">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left font-large text-black dark:text-gray-200 uppercase tracking-wider">
+                                        Time</th>
+                                    <th scope="col" class="px-6 py-3 text-left font-large text-black dark:text-gray-200 uppercase tracking-wider">
+                                        Pontuação</th>
+                                    <th scope="col" class="px-6 py-3 text-left font-large text-black dark:text-gray-200 uppercase tracking-wider">
+                                        Vitórias</th>
+                                    <th scope="col" class="px-6 py-3 text-left font-large text-black dark:text-gray-200 uppercase tracking-wider">
+                                        Derrotas</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-violet-400 divide-y divide-gray-200">
+                                <tr></tr>
+                                @if(isset($campeonato->teams))
+                                @foreach($teams as $team)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $team->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $team->score }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $team->wins }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $team->losses }}</td>
+                                </tr>
+                                @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="flex space-x-4 mt-8">

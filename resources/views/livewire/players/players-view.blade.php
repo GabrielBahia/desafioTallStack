@@ -1,7 +1,7 @@
 <div  x-show.transition.duration.500ms="view" wire:ignore.self x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="modal absolute right-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0,0,0,.5);">
     
     <div class="text-left bg-white lg:p-14 lg:px-52 shadow-xl rounded-lg mx-2 md:mx-0">
-                <div class="flex w-96 justify-between items-center">
+                <div class="flex justify-between items-center">
                     <div class="text-2xl">Visualizar Jogador</div>
             
                     <!-- Modal Close -->
@@ -12,7 +12,7 @@
                     </button>
                     <!-- Modal Close -->
                 </div>
-                <div class="w-96">
+                <div class="">
                     <div class="sm:col-span-6">
                         <label for="name" class="block text-sm font-medium text-gray-700">Nome</label>
                         <div class="mt-1">

@@ -37,7 +37,7 @@
             <div class="sm:col-span-6">
                 <label for="wins" class="block text-sm font-medium text-gray-700">Vitórias</label>
                 <div class="mt-1">
-                    <input required type="number" step="1" id="wins" wire:model="wins" name="wins" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input required type="number" step="1" min="0" id="wins" wire:model="wins" name="wins" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                 </div>
                 @error('wins')
                 <span class="text-red-400">{{ $message }}</span>
@@ -47,7 +47,7 @@
             <div class="sm:col-span-6">
                 <label for="losses" class="block text-sm font-medium text-gray-700">Derrotas</label>
                 <div class="mt-1">
-                    <input required type="number" step="1" id="losses" wire:model="losses" name="losses" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input required type="number" step="1" min="0" id="losses" wire:model="losses" name="losses" class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                 </div>
                 @error('losses')
                 <span class="text-red-400">{{ $message }}</span>
