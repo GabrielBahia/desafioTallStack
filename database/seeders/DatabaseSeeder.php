@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Championship;
 use App\Models\Player;
 use App\Models\Team;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,19 +20,24 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        for($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $this->call(TeamSeeder::class);
         }
 
-        for($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $this->call(PlayerSeeder::class);
         }
 
-        for($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $this->call(ChampionshipSeeder::class);
         }
 
-        // \App\Models\User::factory(10)->create();
+        User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@user',
+        ]);
+
+        // \App\Models\User::factory(3)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
