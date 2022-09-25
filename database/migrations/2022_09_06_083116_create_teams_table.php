@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('nationality');
-            $table->unsignedInteger('score')->default(0);
+            $table->integer('score')->default(0);
             $table->unsignedInteger('wins')->default(0);
             $table->unsignedInteger('losses')->default(0);
             $table->timestamps();

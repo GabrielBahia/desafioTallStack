@@ -27,6 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard');
     })/*->middleware(['auth'])*/->name('dashboard');
 
+    
     Route::get('/jogadores', Players::class)->name('jogadores');
 
     Route::get('/times', Teams::class)->name('times');
@@ -36,7 +37,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/ranking', Ranking::class)->name('ranking');
 
     Route::get('/dashboardCampeonatos', Dashboard::class)->name('dashboardCampeonatos');
-
 });
 
 
