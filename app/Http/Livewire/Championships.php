@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 use App\Models\Championship;
 use App\Models\Player;
 use App\Models\Team;
-
+use Livewire\WithPagination;
 use Livewire\Component;
 
 class Championships extends Component
 {
+    use WithPagination;
+
     public $name;
     public $game;
     public $start_date;
@@ -96,10 +98,11 @@ class Championships extends Component
 
     public function render()
     {
+        $championships =  Championship::paginate(6);
         return view('livewire.championships.championships-index', [
             'teams' => Team::all(),
             'players' => Player::all(),
-            'championships' => Championship::all(),
+            'championships' => $championships,
         ]);
     }
 }

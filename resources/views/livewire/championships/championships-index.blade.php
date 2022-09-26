@@ -63,7 +63,9 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="flex justify-center mt-6 ">
+                    {{ $championships->links() }}
+                </div>
             </div>
 
         </div>

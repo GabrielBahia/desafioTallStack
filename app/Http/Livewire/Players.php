@@ -7,10 +7,11 @@ use App\Models\Team;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Players extends Component
 {
-    use WithFileUploads;
+    use WithPagination;
 
     public $id_player;
     public $name;
@@ -127,9 +128,10 @@ class Players extends Component
 
     public function render()
     {
+        $players = Player::paginate(6);
         return view('livewire.players.players-index', [
-            'teams' => Team::all(),
-            'players' => Player::all(),
+            'teams' => Team::all(), 
+            'players' => $players
         ]);
     }
 }

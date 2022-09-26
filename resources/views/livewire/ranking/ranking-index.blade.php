@@ -55,6 +55,8 @@
                 </div>
             </div>
         </div>
-
+        <div class="flex justify-center mt-6 ">
+            {{ $teams->links() }}
+        </div>
     </div>
 </div>

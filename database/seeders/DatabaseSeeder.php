@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
         for ($i = 0; $i < 10; $i++) {
             $this->call(TeamSeeder::class);
         }
@@ -36,12 +35,5 @@ class DatabaseSeeder extends Seeder
             'name' => 'user',
             'email' => 'user@user',
         ]);
-
-        // \App\Models\User::factory(3)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

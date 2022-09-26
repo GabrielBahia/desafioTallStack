@@ -7,9 +7,11 @@ use App\Models\Player;
 use App\Models\Team;
 use Livewire\Component;
 use PhpParser\Node\NullableType;
-
+use Livewire\WithPagination;
 class Teams extends Component
 {
+    use WithPagination;
+
     public $id_team;
     public $name;
     public $nationality;
@@ -117,8 +119,9 @@ class Teams extends Component
 
     public function render()
     {
+        $teams = Team::paginate(6);
         return view('livewire.teams.teams-index', [
-            'teams' => Team::all(),
+            'teams' => $teams,
             'championships' => Championship::all(),
             'players' => Player::all(),
             'playersTeam' => $this->playersTeam,

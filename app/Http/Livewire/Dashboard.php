@@ -56,9 +56,9 @@ class Dashboard extends Component
             
     
         }
-
+        $championships =  Championship::paginate(6);
         return view('livewire.dashboard.dashboard-index', [
-            'championships' => Championship::all(),
+            'championships' => $championships,
             'teams' => $times,
         ]);
     }
