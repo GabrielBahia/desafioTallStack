@@ -54,6 +54,7 @@ class Teams extends Component
 
         $team->championships()->sync($this->championshipsTeam);
 
+        session()->flash('message', "Time $this->name foi criado com sucesso");
         $this->showCreate = false;
         $this->reset();
     }
@@ -106,6 +107,7 @@ class Teams extends Component
         $team->championships()->detach($oldChampionships);
         $team->championships()->sync($this->championshipsTeam);
 
+        session()->flash('message', "Time $this->name foi atualizado com sucesso");
         $this->showEdit = false;
         $this->reset();
     }
@@ -113,6 +115,7 @@ class Teams extends Component
     public function deleteTeam($id)
     {
         $team = Team::findOrFail($id);
+        session()->flash('message', "Time $team->name foi removido com sucesso");
         $team->delete();
         $this->reset();
     }

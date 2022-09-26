@@ -6,7 +6,6 @@ use App\Models\Player;
 use App\Models\Team;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class Players extends Component
@@ -49,6 +48,7 @@ class Players extends Component
             'team_id' => $this->team_id
         ]);
         
+        session()->flash('message', "Jogador $this->name foi criado com sucesso");
         $this->showCreate = false;
         $this->reset();
     }
@@ -114,7 +114,7 @@ class Players extends Component
             'team_id' => $this->team_id
         ]);
 
-
+        session()->flash('message', "Jogador $this->name foi atualizado com sucesso");
         $this->showEdit = false;
         $this->reset();
     }
@@ -122,6 +122,7 @@ class Players extends Component
     public function deletePlayer($id)
     {
         $player = Player::findOrFail($id);
+        session()->flash('message', "Jogador $player->name foi removido com sucesso");
         $player->delete();
         $this->reset();
     }

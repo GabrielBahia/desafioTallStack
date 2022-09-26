@@ -43,6 +43,7 @@ class Championships extends Component
 
         $championship->teams()->sync($this->teamsChampionship);
         
+        session()->flash('message', "Campeonato $this->name foi criado com sucesso");
         $this->showCreate = false;
         $this->reset();
     }
@@ -84,6 +85,7 @@ class Championships extends Component
         $championship->teams()->detach($oldTeams);
         $championship->teams()->sync($this->teamsChampionship);
 
+        session()->flash('message', "Campeonato $this->name foi atualiado com sucesso");
         $this->showEdit = false;
         $this->reset(); 
     }
@@ -91,6 +93,7 @@ class Championships extends Component
     public function deleteChampionship($id)
     {
         $championship = Championship::findOrFail($id);
+        session()->flash('message', "Campeonato $championship->name foi removido com sucesso");
         $championship->delete();
         $this->reset();
     }

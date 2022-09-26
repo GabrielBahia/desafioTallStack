@@ -7,8 +7,15 @@
             <div class="max-w-6xl mx-auto">
                 <h1 class="shadow-lg shadow-violet-800 mt-8 mb-12 py-2 align-middle font-semibold rounded-full text-3xl w-full text-center display:inline-block bg-purple-500">Jogadores</h1>
                 <div class="m-2 p-2">
+                    <div>
+                        @if (session()->has('message'))
+                        <div class="font-semibold text-black rounded-full align-middle bg-green-500 text-center text-xl alert alert-success mb-6 w-26">
+                            {{ session('message') }}
+                        </div>
+                        @endif
+                    </div>
                     <div class="flex justify-end items-center">
-                        <button @click="create = true" type="button" class=" items-center flex flex-nowrap shadow-2xl focus:outline-none text-black bg-green-300 hover:bg-green-400  focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-2 bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <button @click="create = true" type="button" class="items-center flex flex-nowrap shadow-2xl focus:outline-none text-black bg-green-300 hover:bg-green-400  focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-2 bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
                             </svg> Criar Jogador</button>
                     </div>
@@ -70,9 +77,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-center mt-6 ">
-                        {{ $players->links() }}
-                    </div>
 
                 </div>
             </div>
@@ -80,9 +84,13 @@
             <div x-show="!create">
                 <div x-show="!edit">
                     <div x-show="!view">
+                        <div class="flex justify-center mt-6 mb-6">
+                            {{ $players->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

@@ -2,9 +2,9 @@
     @include('livewire.dashboard.dashboard-view')
     <h1 class="shadow-lg shadow-violet-800 mt-8 mb-12 py-2 align-middle font-semibold rounded-full text-3xl w-full text-center display:inline-block bg-purple-500">Campeonatos</h1>
     <div class="m-2 p-2">
-        <div class=" overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class=" shadow-2xl overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <div class="shadow-2xl overflow-hidden border-b border-gray-200 sm:rounded-lg">
                     <table class="w-full divide-y divide-gray-200">
                         <thead class="bg-violet-500 dark:bg-gray-600 dark:text-gray-200">
                             <tr>
@@ -43,10 +43,12 @@
                 </div>
             </div>
         </div>
+        
+    </div>
+    
+    <div x-show="!view">
         <div class="flex justify-center mt-6 ">
             {{ $championships->links() }}
         </div>
-
     </div>
-    <div x-show="!view"></div>
 </div>

@@ -2,7 +2,7 @@
 
     <div class="text-left bg-white lg:p-14 lg:px-52 shadow-xl rounded-lg mx-2 md:mx-0">
         <div class="flex w-96 justify-between items-center">
-            <div class="text-2xl">Editar Jogador</div>
+            <div class="text-2xl">Editar Time</div>
 
             <!-- Modal Close -->
             <button class="" @click="edit = false">
