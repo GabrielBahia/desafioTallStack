@@ -1,6 +1,6 @@
-<div x-show.transition.duration.500ms="view" wire:ignore.self x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="modal absolute right-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0,0,0,.5);">
+<div x-show.transition.duration.500ms="view" wire:ignore.self x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="mt-18 modal absolute right-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0,0,0,.5);">
 
-    <div class="text-left bg-white lg:p-14 lg:px-52 shadow-xl rounded-lg mx-2 md:mx-0 h-screen w-screen justify-center">
+    <div class=" mt-96 text-left bg-white lg:p-14 lg:px-52 shadow-xl rounded-lg mx-2 md:mx-0 h-auto w-full justify-center">
         <div class="">
             <div class="flex justify-end">
                 <!-- Modal Close -->
@@ -12,10 +12,10 @@
                 <!-- Modal Close -->
             </div>
             <div class="flex justify-center items-center">
-                <div class="text-2xl mb-14">Visualizar Campeonato</div>
+                <div class="text-2xl mb-14 mt-24">Visualizar Campeonato</div>
             </div>
         </div>
-        <div class="flex justify-center flex-wrap">
+        <div class="flex justify-center flex-wrap ml-8">
 
             <div class="flex flex-row flex-wrap">
                 <div class="mr-2">
