@@ -27,7 +27,7 @@ class Players extends Component
     public $showView = false;
 
     protected $rules = [
-        'name' => 'string|required|min:3',
+        'name' => 'string|required|min:1',
         'age' => 'numeric|required|min:1',
         'nationality' => 'string|required',
         'wins' => 'numeric|min:0',

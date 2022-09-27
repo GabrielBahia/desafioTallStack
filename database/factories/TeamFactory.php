@@ -19,8 +19,8 @@ class TeamFactory extends Factory
         return [
             'name' =>  $this->faker->name(),
             'nationality' => $this->faker->country(),
-            'wins' => $this->faker->randomNumber(2, false),
-            'losses' => $this->faker->randomNumber(2, false)
+            'wins' => $this->faker->numberBetween(0, 100),
+            'losses' => $this->faker->numberBetween(0, 50)
         ];
     }
 }
