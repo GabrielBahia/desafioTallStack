@@ -1,3 +1,4 @@
+# Sistema de gerenciamento de Campeonatos, times e jogadores utilizando as tecnologias TALLSTACK
 # Desafio de Laravel - Code Junior 2022.2
 
 | **Sumário** |
